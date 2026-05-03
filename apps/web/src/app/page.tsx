@@ -139,16 +139,8 @@ export default function Home() {
                 />
                 <div className="flex justify-between items-center px-4 pb-2 border-t border-slate-800/50 pt-3">
                   <div className="flex gap-2 text-slate-500">
-                    <FileSearch 
-                      className="w-5 h-5 cursor-pointer hover:text-blue-400 transition" 
-                      onClick={() => alert("Enterprise Feature: In a production environment, this would open a file picker to upload a PDF Offer Letter or Resume for OCR (Optical Character Recognition) analysis.")}
-                      title="Upload Document (Premium)"
-                    />
-                    <Scan 
-                      className="w-5 h-5 cursor-pointer hover:text-blue-400 transition" 
-                      onClick={() => alert("URL Scanner: This feature allows users to paste a LinkedIn or Indeed URL, and the backend scraper would automatically extract the job description.")}
-                      title="Scan Job URL"
-                    />
+                    <FileSearch className="w-5 h-5 cursor-pointer hover:text-blue-400 transition" />
+                    <Scan className="w-5 h-5 cursor-pointer hover:text-blue-400 transition" />
                   </div>
                   <Button onClick={handleScan} disabled={isScanning || !jobText.trim()} className="bg-blue-600 hover:bg-blue-500 shadow-lg shadow-blue-500/20">
                     {isScanning ? (

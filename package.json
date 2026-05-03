@@ -1,0 +1,15 @@
+{
+  "name": "hireshield-monorepo",
+  "version": "1.0.0",
+  "description": "HireShield - Advanced Industry-Level Fake Job Detection Platform",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
+  }
+}

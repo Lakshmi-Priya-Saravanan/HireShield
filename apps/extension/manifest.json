@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "HireShield: Job Fraud Detector",
+  "version": "1.0",
+  "description": "Instantly scan and score job postings for fraud on LinkedIn, Indeed, and more.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:4000/*",
+    "https://*.linkedin.com/*",
+    "https://*.indeed.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.linkedin.com/*", "https://*.indeed.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Analyze Job Posting"
+  }
+}

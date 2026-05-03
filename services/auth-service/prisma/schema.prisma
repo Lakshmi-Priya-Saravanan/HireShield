@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  role      Role     @default(SEEKER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  scans     Scan[]
+  reports   FraudReport[]
+}
+
+model Scan {
+  id              String   @id @default(uuid())
+  userId          String?
+  jobDescription  String   @db.Text
+  url             String?
+  fraudScore      Float
+  riskLevel       String
+  scannedAt       DateTime @default(now())
+
+  user            User?    @relation(fields: [userId], references: [id])
+}
+
+model FraudReport {
+  id              String   @id @default(uuid())
+  userId          String
+  companyName     String?
+  details         String   @db.Text
+  status          String   @default("PENDING") // PENDING, REVIEWED, ACTION_TAKEN
+  reportedAt      DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id])
+}
+
+model Company {
+  id              String   @id @default(uuid())
+  name            String   @unique
+  trustScore      Float    @default(100.0)
+  isBlacklisted   Boolean  @default(false)
+  verified        Boolean  @default(false)
+}
+
+enum Role {
+  SEEKER
+  RECRUITER
+  ADMIN
+}

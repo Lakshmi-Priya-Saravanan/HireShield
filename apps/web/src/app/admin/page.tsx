@@ -36,14 +36,20 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 p-8">
-      <header className="flex justify-between items-center mb-8">
+      <header className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Enterprise Analytics</h1>
           <p className="text-slate-400">Monitor platform threat detection and system health.</p>
         </div>
-        <div className="flex items-center gap-4 bg-slate-900 border border-slate-800 rounded-lg p-2 px-4 shadow-lg">
-          <Activity className="w-5 h-5 text-green-500 animate-pulse" />
-          <span className="text-sm font-medium">System Status: Optimal</span>
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <nav className="flex gap-4 mr-4">
+            <a href="/" className="text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors">Scanner</a>
+            <a href="/admin" className="text-sm font-medium text-slate-100 border-b border-slate-100 pb-1">Analytics Dashboard</a>
+          </nav>
+          <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg p-2 px-4 shadow-lg">
+            <Activity className="w-5 h-5 text-green-500 animate-pulse" />
+            <span className="text-sm font-medium">System Status: Optimal</span>
+          </div>
         </div>
       </header>
 

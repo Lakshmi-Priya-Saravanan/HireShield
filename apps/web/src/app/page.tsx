@@ -97,7 +97,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-400">HireShield</h1>
           </div>
           <nav className="flex gap-4">
-            <Link href="/"><Button variant="ghost">Scanner</Button></Link>
+            <Link href="/"><Button variant="ghost" className="bg-slate-800/50 text-slate-100 pointer-events-none">Scanner</Button></Link>
             <Link href="/admin"><Button variant="ghost">Analytics Dashboard</Button></Link>
             <Button>Enterprise Login</Button>
           </nav>

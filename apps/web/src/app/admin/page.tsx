@@ -24,6 +24,16 @@ const platformData = [
 ];
 
 export default function AdminDashboard() {
+  const [threats, setThreats] = React.useState<{time: string, ip: string}[]>([]);
+
+  React.useEffect(() => {
+    const generated = Array.from({ length: 20 }).map((_, i) => ({
+      time: new Date(Date.now() - i * 14000).toISOString().split('T')[1].slice(0, 8),
+      ip: `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`
+    }));
+    setThreats(generated);
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 p-8">
       <header className="flex justify-between items-center mb-8">
@@ -136,11 +146,11 @@ export default function AdminDashboard() {
                 animate={{ y: ["0%", "-50%"] }}
                 transition={{ repeat: Infinity, ease: "linear", duration: 20 }}
               >
-                {Array.from({ length: 20 }).map((_, i) => (
+                {threats.map((threat, i) => (
                   <div key={i} className="flex items-center justify-between px-6 py-3 border-b border-slate-800/50 hover:bg-slate-800/30 transition-colors">
                     <div className="flex items-center gap-4">
-                      <span className="text-xs font-mono text-slate-500">{new Date(Date.now() - i * 14000).toISOString().split('T')[1].slice(0, 8)}</span>
-                      <span className="text-sm font-medium text-slate-300">Suspicious IP: 192.168.{Math.floor(Math.random() * 255)}.{Math.floor(Math.random() * 255)}</span>
+                      <span className="text-xs font-mono text-slate-500">{threat.time}</span>
+                      <span className="text-sm font-medium text-slate-300">Suspicious IP: {threat.ip}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="px-2 py-1 rounded-md bg-red-500/10 text-red-400 text-xs font-semibold border border-red-500/20">BLOCKED</span>

@@ -1,6 +1,4 @@
-// Helper utility for interacting with the HireShield API Gateway
-
-const API_BASE = 'http://localhost:4000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api';
 
 // Retrieve auth token from localStorage
 export function getAuthToken(): string | null {

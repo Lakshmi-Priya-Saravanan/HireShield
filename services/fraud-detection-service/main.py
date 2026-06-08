@@ -1,6 +1,12 @@
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
 import re
+import os
+from dotenv import load_dotenv
+
+# Load local environment variables from .env file
+load_dotenv()
+
 from model import FraudDetectionModel
 
 app = FastAPI(
